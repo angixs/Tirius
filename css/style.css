@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Montserrat:wght@300;400&display=swap');
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  padding-top: 120px;
+}
+
+/* BASE */
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  background: #fff;
+  line-height: 1.6;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;        /* ⬅️ FISSA */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+  background: white;      /* ⬅️ OBBLIGATORIO */
+  z-index: 1000;          /* ⬅️ sopra tutto */
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+}
+
+/* LOGO LINK RESET */
+.logo a {
+  text-decoration: none;      /* niente sottolineatura */
+  color: inherit;             /* usa il colore del logo */
+}
+
+
+.navbar > nav {
+  display: flex;
+  gap: 30px;
+}
+.navbar nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+}
+
+/* HERO HOME */
+.hero {
+  min-height: 100vh;                  /* meglio di height */
+  background-image: url("../img/intro.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-text {
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  padding: 50px;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* PAGE HERO */
+.page-hero {
+
+  background: 
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    url("../img/outro.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.page-hero h1 {
+  color: #fff;
+}
+
+
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+}
+
+/* SEZIONI */
+.section {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* APPARTAMENTO */
+.apartment img {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.apartment-text h2 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 15px;
+}
+
+/* CONTATTI */
+.contact-intro {
+  margin-bottom: 50px;
+  font-size: 1.1rem;
+}
+
+.contact-box {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  font-size: 1.1rem;
+}
+
+.contact-box a {
+  text-decoration: none;
+  color: #333;
+}
+
+.contact-box a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #f5f5f5;
+  margin-top: 80px;
+}
+
+/* ===================== */
+/* RESPONSIVE MOBILE */
+/* ===================== */
+
+@media (max-width: 768px) {
+
+  /* NAVBAR */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 20px;
+  }
+
+  .navbar nav {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .navbar nav a {
+    font-size: 1.1rem;
+  }
+
+  /* HERO */
+  .hero {
+    height: 70vh;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  /* PAGE HERO */
+  .page-hero {
+    height: 35vh;
+  }
+
+  .page-hero h1 {
+    font-size: 2rem;
+  }
+
+  /* CONTATTI */
+  .contact-box {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+/* DROPDOWN MENU */
+.menu-wrapper {
+  position: relative;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  display: none;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  z-index: 100;
+}
+
+.dropdown-menu {
+  border-radius: 6px;
+}
+
+
+.dropdown-menu.show {
+  display: flex;        /* ← SI APRE SOLO CON .show */
+}
+
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: #333;
+  white-space: nowrap;
+}
+
+
+.dropdown-menu.show {
+  display: flex;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===================== */
+/* DESKTOP & TABLET */
+/* ===================== */
+@media (min-width: 769px) {
+
+  .menu-btn {
+    display: none;              /* niente "Menu" */
+  }
+
+  .dropdown-menu {
+    display: flex !important;   /* link sempre visibili */
+    position: static;           /* dentro la navbar */
+    flex-direction: row;
+    gap: 30px;
+    padding: 0;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+/* ===================== */
+/* MOBILE */
+/* ===================== */
+@media (max-width: 768px) {
+
+  .menu-btn {
+    display: inline-block;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    display: none;              /* chiuso di default */
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    z-index: 100;
+  }
+
+  .dropdown-menu.show {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .dropdown-menu a:hover {
+    text-decoration: underline;
+  }
+}
+
+
+/* GALLERIA APPARTAMENTO */
+.gallery {
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+.gallery-main {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 10px;
+}
+
+.gallery-thumbs img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.gallery-thumbs img:hover {
+  opacity: 1;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .gallery-thumbs {
+    justify-content: center;
+  }
+
+  .gallery-thumbs img {
+    width: 70px;
+    height: 50px;
+  }
+}
+
+.services {
+  list-style: none;   /* toglie i pallini */
+  padding: 0;         /* toglie rientro */
+  margin: 0;
+}
+
+.services li {
+  margin-bottom: 10px;
+}
+
+
+.airbnb-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 25px;
+  background: #ff979a;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.apartment-info {
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.apartment-details {
+  margin-top: 10px;
+  color: #666;
+}
+
+/* HOST PHOTO */
+.host-photo {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.host-photo img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;        /* rende l’immagine tonda */
+}
