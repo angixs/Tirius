@@ -1,28 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===== MENU ===== */
   const menuBtn = document.getElementById("menuBtn");
   const dropdown = document.getElementById("dropdownMenu");
 
-  if (!menuBtn || !dropdown) return;
-
-  menuBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    dropdown.classList.toggle("show");
-  });
-
-  document.addEventListener("click", () => {
-    dropdown.classList.remove("show");
-  });
-});
-
-const mainImage = document.getElementById("mainImage");
-const thumbs = document.querySelectorAll(".gallery-thumbs img");
-
-if (mainImage && thumbs.length) {
-  thumbs.forEach((thumb) => {
-    thumb.addEventListener("click", () => {
-      mainImage.src = thumb.src;
+  if (menuBtn && dropdown) {
+    menuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle("show");
     });
-  });
-}
 
+    document.addEventListener("click", () => {
+      dropdown.classList.remove("show");
+    });
+  }
 
+  /* ===== GALLERIA THUMBS ===== */
+  const thumbs = document.getElementById("thumbs");
+  const prev = document.getElementById("thumbPrev");
+  const next = document.getElementById("thumbNext");
+  const mainImage = document.getElementById("mainImage");
+
+  if (thumbs && prev && next) {
+    next.addEventListener("click", () => {
+      thumbs.scrollLeft += 150;
+    });
+
+    prev.addEventListener("click", () => {
+      thumbs.scrollLeft -= 150;
+    });
+  }
+
+  /* ===== CLICK MINIATURE ===== */
+  if (mainImage && thumbs) {
+    thumbs.querySelectorAll("img").forEach(img => {
+      img.addEventListener("click", () => {
+        mainImage.src = img.src;
+      });
+    });
+  }
+
+});
