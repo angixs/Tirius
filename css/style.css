@@ -317,24 +317,28 @@ footer {
   margin: 0 auto 40px;
 }
 
+/* IMMAGINE PRINCIPALE GALLERIA */
 .gallery-main {
   width: 100%;
-  height: auto;
-  margin-bottom: 15px;
+  height: 500px;              /* area fissa */
+  object-fit: contain;        /* ⬅️ MAI crop */
+  background: #f5f5f5;        /* riempie gli spazi vuoti */
+  display: block;
 }
-
-.gallery-thumbs {
-  display: flex;
-  gap: 10px;
+@media (max-width: 768px) {
+  .gallery-main {
+    height: 300px;
+  }
 }
-
 .gallery-thumbs img {
-  width: 100px;
-  height: 70px;
-  object-fit: cover;
+  width: 120px;
+  height: 80px;
+  object-fit: cover;     /* SOLO per le thumbs */
   cursor: pointer;
-  opacity: 0.7;
+  flex-shrink: 0;
+  opacity: 0.8;
 }
+
 
 .gallery-thumbs img:hover {
   opacity: 1;
@@ -367,7 +371,7 @@ footer {
   display: inline-block;
   margin-top: 30px;
   padding: 12px 25px;
-  background: #ff979a;
+  background: #e2d3c7;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -397,20 +401,7 @@ footer {
   border-radius: 50%;        /* rende l’immagine tonda */
 }
 
-/* IMMAGINE PRINCIPALE GALLERIA */
-.gallery-main {
-  width: 100%;
-  height: 500px;          /* altezza fissa */
-  object-fit: cover;     /* riempie senza deformare */
-  display: block;
-}
-.gallery-thumbs img {
-  width: 100px;
-  height: 70px;
-  object-fit: cover;     /* fondamentale */
-  cursor: pointer;
-  opacity: 0.7;
-}
+  
 @media (max-width: 768px) {
   .gallery-main {
     height: 300px;
@@ -432,12 +423,7 @@ footer {
   scroll-behavior: smooth;
   max-width: 100%;
 }
-.gallery-thumbs img {
-  width: 120px;
-  height: 80px;
-  object-fit: contain;
-  background: #f0f0f0;   /* sfondo neutro */
-}
+
 
 
 /* FRECCE */
@@ -456,3 +442,19 @@ footer {
   background: #f0f0f0;
 }
 
+.gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;        /* ⬅️ abilita scroll */
+  scroll-behavior: smooth;
+  cursor: grab;
+}
+
+.gallery-thumbs:active {
+  cursor: grabbing;
+}
+
+/* nasconde la scrollbar (estetica) */
+.gallery-thumbs::-webkit-scrollbar {
+  display: none;
+}

@@ -41,3 +41,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+/* ===== DRAG SCROLL MINIATURE ===== */
+let isDown = false;
+let startX;
+let scrollLeft;
+
+if (thumbs) {
+  thumbs.addEventListener("mousedown", (e) => {
+    isDown = true;
+    thumbs.classList.add("active");
+    startX = e.pageX - thumbs.offsetLeft;
+    scrollLeft = thumbs.scrollLeft;
+  });
+
+  thumbs.addEventListener("mouseleave", () => {
+    isDown = false;
+  });
+
+  thumbs.addEventListener("mouseup", () => {
+    isDown = false;
+  });
+
+  thumbs.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - thumbs.offsetLeft;
+    const walk = (x - startX) * 2; // velocità
+    thumbs.scrollLeft = scrollLeft - walk;
+  });
+}
